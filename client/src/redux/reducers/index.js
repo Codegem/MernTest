@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import PostsReducer from "./postsReducers";
+import GlobalReducer from "./globalReducers";
 
 export const reducer = combineReducers({
-  PostsReducer,
+  posts: PostsReducer,
+  global: GlobalReducer,
 });
