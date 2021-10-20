@@ -20,6 +20,10 @@ const Post = ({ post }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const likeHandler = (id) => {
+    dispatch(likePost(id));
+  };
+
   const idSetter = (id) => {
     dispatch(setCurrentId(id));
   };
@@ -49,7 +53,7 @@ const Post = ({ post }) => {
       </div>
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => `#${tag}`)}
+          {post?.tags?.map((tag) => `#${tag}`)}
         </Typography>
       </div>
       <Typography variant="h5" className={classes.title} gutterBottom>
@@ -64,7 +68,7 @@ const Post = ({ post }) => {
         <Button
           size="small"
           color="primary"
-          onClick={() => dispatch(likePost(post._id))}
+          onClick={() => likeHandler(post._id)}
         >
           <ThumbUpAltIcon fontSize="small" />
           &nbsp;Like&nbsp;
